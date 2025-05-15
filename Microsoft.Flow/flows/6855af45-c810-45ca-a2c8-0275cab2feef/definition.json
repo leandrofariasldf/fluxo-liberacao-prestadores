@@ -1,0 +1,120 @@
+{
+    "name": "insira_flow_id_aqui",
+    "id": "/providers/Microsoft.Flow/flows/insira_flow_id_aqui",
+    "type": "Microsoft.Flow/flows",
+    "properties": {
+      "apiId": "/providers/Microsoft.PowerApps/apis/shared_logicflows",
+      "displayName": "Liberar Prestadores",
+      "definition": {
+        "metadata": {
+          "workflowEntityId": null,
+          "processAdvisorMetadata": null,
+          "flowChargedByPaygo": null,
+          "flowclientsuspensionreason": "None",
+          "flowclientsuspensiontime": null,
+          "flowclientsuspensionreasondetails": null,
+          "creator": {
+            "id": "insira_user_id_aqui",
+            "type": "User",
+            "tenantId": "insira_tenant_id_aqui"
+          },
+          "provisioningMethod": "FromDefinition",
+          "failureAlertSubscription": true,
+          "clientLastModifiedTime": "2025-05-07T13:23:20.1206348Z",
+          "connectionKeySavedTimeKey": "2025-05-07T13:23:20.1206348Z",
+          "creationSource": "Portal",
+          "modifiedSources": "Portal"
+        },
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "contentVersion": "undefined",
+        "parameters": {
+          "$authentication": {
+            "defaultValue": {},
+            "type": "SecureObject"
+          },
+          "$connections": {
+            "defaultValue": {},
+            "type": "Object"
+          }
+        },
+        "triggers": {
+          "manual": {
+            "type": "Request",
+            "kind": "Button",
+            "inputs": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "text_1": {
+                    "description": "",
+                    "title": "Empresa",
+                    "type": "string",
+                    "x-ms-content-hint": "TEXT",
+                    "x-ms-dynamically-added": true
+                  },
+                  "text": {
+                    "description": "",
+                    "title": "Nome",
+                    "type": "string",
+                    "x-ms-content-hint": "TEXT",
+                    "x-ms-dynamically-added": true
+                  },
+                  "text_2": {
+                    "description": "",
+                    "title": "CPF/RG",
+                    "type": "string",
+                    "x-ms-content-hint": "TEXT",
+                    "x-ms-dynamically-added": true
+                  },
+                  "text_3": {
+                    "description": "",
+                    "title": "Placa",
+                    "type": "string",
+                    "x-ms-content-hint": "TEXT",
+                    "x-ms-dynamically-added": true
+                  }
+                },
+                "required": ["text_1", "text", "text_2"]
+              }
+            }
+          }
+        },
+        "actions": {
+          "Enviar_um_email_(V2)": {
+            "runAfter": {},
+            "type": "OpenApiConnection",
+            "inputs": {
+              "parameters": {
+                "emailMessage/To": "insira_email_destino@seudominio.com",
+                "emailMessage/Subject": "Liberação prestador @{triggerOutputs()?['body/text']} - @{triggerOutputs()?['body/text_1']}",
+                "emailMessage/Body": "<p>Boa tarde,</p><p>Solicito liberação para o Prestador <b>@{triggerOutputs()?['body/text']}</b> da empresa <b>@{triggerOutputs()?['body/text_1']}</b>, conforme dados abaixo:</p><p><b>CPF/RG:</b> @{triggerOutputs()?['body/text_2']}</p>@{if(empty(triggerOutputs()?['body/text_3']), '', concat('<p><b>Placa:</b> ', triggerOutputs()?['body/text_3'], '</p>'))}<br><p>Atenciosamente,</p><p><b>Insira seu nome</b><br>Insira seu cargo</p><p><img src='insira_o_logo_aqui.png' alt='Logo' width='150'></p><p style='font-size:12px;color:gray;'>Solicitação enviada em: @{utcNow()}</p>",
+                "emailMessage/Cc": "insira_email_cc@seudominio.com",
+                "emailMessage/Importance": "Normal"
+              },
+              "host": {
+                "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                "connectionName": "insira_connection_name_aqui",
+                "operationId": "SendEmailV2"
+              },
+              "authentication": {
+                "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+                "type": "Raw"
+              }
+            }
+          }
+        }
+      },
+      "connectionReferences": {
+        "shared_office365": {
+          "connectionName": "insira_connection_name_aqui",
+          "source": "Invoker",
+          "id": "/providers/Microsoft.PowerApps/apis/shared_office365",
+          "tier": "NotSpecified",
+          "apiName": "office365"
+        }
+      },
+      "flowFailureAlertSubscribed": false,
+      "isManaged": false
+    }
+  }
+  

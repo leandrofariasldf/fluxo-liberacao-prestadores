@@ -1,0 +1,55 @@
+{
+    "schema": "1.0",
+    "details": {
+      "displayName": "fluxo-liberacao-prestadores.zip",
+      "description": "Liberar prestadores",
+      "createdTime": "2025-05-15T19:07:11.9914762Z",
+      "packageTelemetryId": "171375dc-afac-42eb-b979-c24b7a01ad8f",
+      "creator": "N/A",
+      "sourceEnvironment": "prod"
+    },
+    "resources": {
+      "6855af45-c810-45ca-a2c8-0275cab2feef": {
+        "type": "Microsoft.Flow/flows",
+        "suggestedCreationType": "Update",
+        "creationType": "Existing, New, Update",
+        "details": {
+          "displayName": "Liberar Prestadores"
+        },
+        "configurableBy": "User",
+        "hierarchy": "Root",
+        "dependsOn": [
+          "b45873bc-80d7-48e5-91d2-cbcfe543a01d",
+          "45cda86b-f2d4-442a-9f77-df9402762b9a"
+        ]
+      },
+      "b45873bc-80d7-48e5-91d2-cbcfe543a01d": {
+        "id": "/providers/Microsoft.PowerApps/apis/shared_office365",
+        "name": "shared_office365",
+        "type": "Microsoft.PowerApps/apis",
+        "suggestedCreationType": "Existing",
+        "details": {
+          "displayName": "Office 365 Outlook",
+          "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1751/1.0.1751.4213/office365/icon.png"
+        },
+        "configurableBy": "System",
+        "hierarchy": "Child",
+        "dependsOn": []
+      },
+      "45cda86b-f2d4-442a-9f77-df9402762b9a": {
+        "type": "Microsoft.PowerApps/apis/connections",
+        "suggestedCreationType": "Existing",
+        "creationType": "Existing",
+        "details": {
+          "displayName": "insira o email aqui",
+          "iconUri": "https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1751/1.0.1751.4213/office365/icon.png"
+        },
+        "configurableBy": "User",
+        "hierarchy": "Child",
+        "dependsOn": [
+          "b45873bc-80d7-48e5-91d2-cbcfe543a01d"
+        ]
+      }
+    }
+  }
+  
