@@ -1,38 +1,39 @@
-# Fluxo Power Automate: Liberação de Prestadores 🛠️
+# Power Automate Flow: Contractor Access Approval 🛂
 
-Este repositório contém um fluxo automatizado desenvolvido no Power Automate para gerenciar a entrada e aprovação de prestadores de serviço em ambientes corporativos.
+This repository contains a Power Automate flow designed to manage the submission, approval, and notification process for third-party contractors/service providers entering corporate environments.
 
-## ✅ Funcionalidades
+## ✅ What it does (Features)
 
-- Recebe dados via Microsoft Forms (nome, empresa, CPF/RG, placa)
-- Envia e-mail de solicitação para aprovação
-- Registra os dados dos prestadores liberados
-- Notifica portaria ou setor responsável
+- Collects contractor details via Microsoft Forms (e.g., name, company, ID document, vehicle plate)
+- Sends an approval request by email
+- Stores/records approved contractors for auditing/history
+- Notifies the reception/security gate (or the responsible team)
 
-## 📦 Arquivos
+## 📦 Repository contents
 
-- `fluxo_liberacao_anonimizado.zip` – fluxo exportado, pronto para importação no Power Automate
-- `fluxo_liberacao_anonimizado_final.json` – definição detalhada do fluxo, anonimizada
-- `package.json`, `definition.json` etc. – arquivos internos do pacote, úteis para revisão manual
+- `Liberar prestadores.zip` — exported flow package ready to import into Power Automate
+- `Microsoft.Flow/flows` — flow package contents (useful for manual review / versioning)
+- `manifest.json` — package metadata
 
-## 🚀 Como importar no Power Automate
+## 🚀 How to import into Power Automate
 
-1. Acesse [Power Automate](https://make.powerautomate.com/)
-2. Vá em **Meus fluxos > Importar > Pacote (.zip)**
-3. Faça upload de `fluxo_liberacao_anonimizado.zip`
-4. Escolha "Criar como novo"
-5. Conecte com suas credenciais e clique em **Importar**
+1. Open Power Automate (make.powerautomate.com)
+2. Go to **My flows** → **Import** → **Package (.zip)**
+3. Upload `Liberar prestadores.zip`
+4. Choose **Create as new**
+5. Reconnect the required connectors with your credentials
+6. Click **Import**
 
-## 🧽 Segurança e privacidade
+## 🔒 Security & privacy
 
-Todos os dados sensíveis (e-mails, nomes, domínio da empresa, tenant ID) foram removidos ou substituídos por valores genéricos, garantindo a segurança da publicação pública.
+Sensitive data (emails, names, company domain, tenant IDs, etc.) was removed or replaced with generic placeholders to make this repository safe for public sharing.
 
-## 💡 Dicas de uso
+## 💡 Usage notes / Ideas to extend
 
-- Combine com Power BI para relatórios de acesso
-- Pode ser estendido para controle de visitantes ou técnicos
-- Integre com SharePoint ou Excel Online para armazenar históricos
+- Integrate with Power BI for access reports and dashboards
+- Extend it for visitor management or technician scheduling
+- Store history in SharePoint or Excel Online (instead of—or in addition to—email)
 
-## 📃 Licença
+## 📄 License
 
-Este projeto é open-source e está licenciado sob a [MIT License](LICENSE).
+This project is open-source under the MIT License.
